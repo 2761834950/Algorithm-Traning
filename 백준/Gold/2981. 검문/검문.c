@@ -66,11 +66,7 @@ int main()
         {
             continue;
         }
-        printf("%d", GCD_M / arrB[i]);
-        if(i != 0)
-        {
-            printf(" ");
-        }
+        printf("%d ", GCD_M / arrB[i]);
     }
     
     return 0;
