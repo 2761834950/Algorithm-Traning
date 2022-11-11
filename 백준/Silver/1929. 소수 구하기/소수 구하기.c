@@ -2,36 +2,31 @@
 #include <math.h>
 
 enum{
-    PRIME,
-    NOT_PRIME
+    PRIME = 0,
+    NOT_PRIME = 1
 };
 
-int is_prime(int N)
-{
-    if(N == 1)
-    {
-        return NOT_PRIME;
-    }
-    int lim = sqrt(N);
-    for(int i = 2; i <= lim; i++)
-    {
-        if (N % i == 0)
-        {
-            return NOT_PRIME;
-        }
-    }
-    return PRIME;
-}
+#define MAX 1000001
+int arr[MAX] = {[0] = NOT_PRIME, [1] = NOT_PRIME};
 
 int main()
 {
     int M, N;  scanf("%d %d", &M, &N);
 
+    int lim = (int) sqrt(MAX);
+    for(int i = 2; i <= (int) sqrt(MAX); i++)
+    {
+        for(int j = i * i; j <= MAX; j += i)
+        {
+            arr[j] = NOT_PRIME;
+        }
+    }
+
     for(int i = M; i <= N; i++)
     {
-        if(is_prime(i) == PRIME)
+        if(arr[i] == PRIME)
         {
             printf("%d\n", i);
         }
     }
-} 
+}
